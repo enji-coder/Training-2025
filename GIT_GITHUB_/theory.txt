@@ -1,0 +1,175 @@
+Version Control system :: (VCS)
+
+        Version control system is a tool that helps manage changes to files, specially 
+        source code.
+
+        -> in simple word we can say that it keeps track of every changes 
+        -> it allows you to go back to previous version if something goes wrong. 
+        -> it allows multiple pepole to work together on the same project without 
+            overwriting each other's work. collaboration
+
+--------------------------------------------
+popular version control systems software. 
+
+1) Git : most widely used (used with Github,gitlab,bitbucket)
+        - which provide branching and merging 
+        - git which is a tool which manage all above things and github 
+        which provide hosting.
+2) SVN : subversion
+3) Mercurial 
+-------------------------------------------
+what is Github ? 
+    -> Cloud base version control hosting platform. 
+    -> which is provide hosting service. 
+    -> which is store all repositories online. 
+
+-------------------------------------------
+Now, configure Git (version system tool) to Github (hosting platform)
+
+==> open git bash and check git version 
+
+    #git --version 
+
+==> now, configure Git with Github 
+
+    #git config --global user.name "yourname"
+    #git config --global user.email "email" 
+
+    e.g. 
+
+    #git config --global user.name "enji-coder"
+    #git config --global user.email "enji.20.patel@gmail.com" 
+
+==> to check all configuration list 
+
+    #git config --list 
+------------------------------------------------------------------------------
+git workflow ::
+
+    -> Working directory 
+            -------------> 
+            #git add 
+                        Stagging Area 
+                        --------------->
+                        git commit 
+                                        local repo 
+                                        ----------->
+                                        git push                 
+                                                -------> remote repo
+
+
+stagging area : temporary area where we can store our local repo. 
+        before commit it store in stagging area 
+        after commit it move to local repo. 
+        then after push visible on remote repo. 
+--------------------------------------------------------------------------------------
+# Link local git repo to github 
+
+==> create local folder 
+
+    #mkdir my-first-project 
+
+    #cd my-first-project 
+
+    #git init 
+
+    #echo "my content" > filename.txt 
+
+    #git add . 
+
+    #git commit -m "remarks" 
+        here, -m means message 
+
+    #git branch -M main 
+        here, we are changing our branch name master to main 
+
+    #git remote add origin <repourl> 
+        e.g. 
+
+        #git remote add origin https://github.com/enji-coder/my-demo-project.git
+
+    #git push -u origin master  or main  
+        if we do first time git push -u origin main then it save your main branch for next time 
+
+        and next time you can use only 
+
+        #git push 
+            and it will work properly 
+
+----------------------------------------
+.gitignore : A .gitignore file tells git which files or folders 
+    it should ignore - means it will not track - not add in stagging area 
+    after commit it will skip thoese files which declare inside the gitignore file. 
+
+    *.css   : means ignore all css file not upload any css file 
+    folder/ : ignore that directory and inside the directory files 
+
+    Real world use : node_modules , env file which contain api keys , password etc.. 
+----------------------------------------
+git restore : this command usually work in 2 places 
+
+    1) working tree (working directory when we are working upon it 
+            before execute git add command
+            )
+
+    2) stagging area (index area) : we can move back to previous code 
+            using of git restore command. 
+
+
+    ==> before stagging - just creating file and try to remove 
+
+        e.g. we are creating index.html 
+
+        adding <h1>... </h1> 
+
+        save it commit it 
+
+        then add one more line 
+
+                <p>....</p>
+
+        and close your directory now, you don't want to add past record 
+            note : which is not in stagging area 
+
+        #git restore .  
+            above command remove that <p> ... </p> line 
+
+    ==> stagging area :: before commit area 
+
+        # git restore --staged file.txt 
+
+        (before commit) it will work 
+=============================================================
+Git Revert ::: Git revert is a safe way to undo changes in git repositories.
+
+    it doesn't delete or rewrite commits 
+    insted of it create new commit that undoes the changes made by earlier one. 
+
+    syntax ::: 
+
+    #git revert <commit_id> 
+
+
+    Note : whenever we push our code on github every time it create unique hash key 
+        encryption key. 
+        top corner right click on commits 
+
+        so, using of this hash code (commit code) we can move to back any commit point 
+
+    #git log 
+        to check recent git logs with commit code 
+
+    e.g. 
+
+    # git revert 66ca554
+
+    # git push 
+
+    Note : now, you can check revert back changes apply on github and now, we can access
+        anywhere.
+
+        Good things about revert is it remain previous commit history + own commit revert history
+=============================================================
+
+
+
